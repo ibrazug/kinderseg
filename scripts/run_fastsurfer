@@ -11,9 +11,9 @@ export FREESURFER_HOME="/usr/local/freesurfer_6"
 #/fast/users/dellorca_c/work/freesurfer-6
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
-fastsurfer_dir="" #Dir with Fastsurfer cloned from Github
-src_dir="" # Dir with subjects
-dest_dir=""
+fastsurfer_dir="/home/ibrazug/Dokumente/FastSurfer" #Dir with Fastsurfer cloned from Github
+src_dir="/run/user/1016/gvfs/smb-share:server=charite.de,share=centren/AG/AG-Neurorad/Daten/Andrea/data/kinderseg_v2/0523_M" # Dir with subjects
+dest_dir="/home/ibrazug/Dokumente/KindersegV2/Ibra/Martin_Fastsurfer_Seg"
 mkdir -p $dest_dir
 
 cd $src_dir
@@ -26,13 +26,15 @@ do
   echo $sub
   if [ ! -e "${dest_dir}/${sub}/mri/aparc.DKTatlas+aseg.deep.mgz" ]
   then
-    t1=`ls ${src_dir}/*.nii.gz`
+    t1=`ls ${src_dir}/${sub}/*.nii.gz`
     ./run_fastsurfer.sh --seg_only \
+                        --vol_segstats \
+                        --parallel --threads 20 \
                         --sd $dest_dir \
                         --sid $sub \
-                        --t1 $t1 \
-                        --parallel --threads 20 \
-                        --vol_segstats
+                        --t1 "$t1" \
+
+
   else
     echo "$sub seg found! skipping"
   fi
