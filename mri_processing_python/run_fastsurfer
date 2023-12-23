@@ -1,3 +1,5 @@
+%%bash
+
 #!/bin/bash
 
 ## Install enviroment:
@@ -7,13 +9,12 @@
 # conda install -c conda-forge numpy scipy scikit-image cycler decorator h5py imageio kiwisolver matplotlib nibabel Pillow pyparsing PyWavelets scikit-image six
 
 #Fastsurfer needs freesurfer 6
-export FREESURFER_HOME="/usr/local/freesurfer_6"
-#/fast/users/dellorca_c/work/freesurfer-6
+export FREESURFER_HOME=$HOME/freesurfer
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
-fastsurfer_dir="/home/ibrazug/Dokumente/FastSurfer" #Dir with Fastsurfer cloned from Github
-src_dir="/run/user/1016/gvfs/smb-share:server=charite.de,share=centren/AG/AG-Neurorad/Daten/Andrea/data/kinderseg_v2/0523_M" # Dir with subjects
-dest_dir="/home/ibrazug/Dokumente/KindersegV2/Ibra/Martin_Fastsurfer_Seg"
+fastsurfer_dir="" #Dir with Fastsurfer cloned from Github
+src_dir="" # Dir with subjects
+dest_dir="" #Destination Dir (where the segmentations to be saved)
 mkdir -p $dest_dir
 
 cd $src_dir
