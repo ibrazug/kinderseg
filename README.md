@@ -1,10 +1,11 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/639393019.svg)](https://zenodo.org/doi/10.5281/zenodo.11521841)
 
 ## Overview
 
 This repository contains information about the subjects and MRI data used in our study, focusing on three distinct groups of healthy individuals aged between 4 and 18 years. The segmentation is based exclusively on T1-MPRAGE images.
 * Frontal_Parietal in this code is Paracentral.
-* 
+
 ### Dataset Statistics
 
 | Dataset        | N° in total | Ex (QC) | N° after QC | Ex(sc) | N° after SC |
