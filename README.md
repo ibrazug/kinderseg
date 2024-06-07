@@ -30,6 +30,7 @@ This repository contains information about the subjects and MRI data used in our
 ### Files:
 - `01.generate_segmentation_outputs (freesurfer and fastsurfer).ipynb`  The provided code outlines a comprehensive pipeline for processing MRI data using both Freesurfer and Fastsurfer for segmentation and volume calculation. For Freesurfer, the pipeline involves preprocessing NIfTI-formatted MRI data, performing parallelized recon-all processing, calculating volumes for specified brain regions, and generating a table summarizing volume statistics for all subjects. The Fastsurfer pipeline includes installing the required environment, processing MRI data using Fastsurfer's run_fastsurfer.sh script, and creating a volume statistics table for all subjects. In the end, two tables, "freesurfer_aseg.volume.stats.csv" and "fastsurfer_aseg.volume.stats.csv," capture the volumetric information for both processing approaches. The code emphasizes adherence to the Brain Image Data Structure (BIDS) and streamlines the segmentation and volume analysis of neuroimaging data.
 - `02.SumROIs (masks and volumes).ipynb`  Python code for generating masks and calculating volumes from segmentation outputs. The code begins by defining anatomical regions and labels, parsing the FreeSurfer color lookup table, and creating mappings between label numbers and names. It then proceeds to generate new masks for specified subjects based on segmentation data, handling cases where segmentation files are missing. The notebook also includes instructions for calculating volumes for predefined regions of interest (ROIs) using data from volume statistics files. The code cleans up the original volume table, defines and sums volumes for 16 predefined ROIs, and calculates relative volumes. The final results, including the generated masks and volume tables, are saved in CSV files.
+- `Python_environment.yml` Python env
 
 
 ## Data Analysis
@@ -37,21 +38,17 @@ This repository contains information about the subjects and MRI data used in our
 - R version 4.1.2  used for analysis
 - Libraries: ggplot2, tidyverse, viridis (R)
 
-### Comparison Metrics `DICE_VOLLDIFF_AI_PLOTs.ipynb`
-- Comparison of FastSurferCNN and FreeSurfer v6 using:
-  - Dice similarity coefficient (DSC)
-  #- Overlay ratio (OR)
-  - Intraclass Correlation Coefficient (ICC)
-  - Visualization of Asymmetry Index (AI) for 14 anatomical regions
-
-### Age-specific Percentile Curves `Percentiles.ipynb`
-- Established using FastSurfer for the entire database
-- Separate visualizations for males and females
+### Files:
+- `DSC_RVD.ipynb` showing how we calculated DSC and RVD values and how the figures were generated  
+- `HAI.ipynb`  showing how HAI values were calcuated for FastSurfer and FreeSurfer outputs
+- `sanity_check_plot` Comparison to findings in the study by [Bethlehem et al. (2022)](https://github.com/brainchart/Lifespan)
+- `ICC_and_mean_volumes` ICC Agreement Calculation and mean Volumes for each ROI.
+- `Percetilcurves_LR` Established using FastSurfer for the entire database
+- `R_environment` R env
 
 
-### Sanity Check of the Final Dataset `sanity_check_plot.ipynb`
-- Comparative analysis to verify representativeness
-- Comparison to findings in the study by [Bethlehem et al. (2022)](https://github.com/brainchart/Lifespan)
+
+
 
 
 
