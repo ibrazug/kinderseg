@@ -8,12 +8,12 @@ This repository contains information about the subjects and MRI data used in our
 
 ### Dataset Statistics
 
-| Dataset        | N° in total | Ex (QC) | N° after QC | Ex(sc) | N° after SC |
-| -------------- | ----------- | ------- | ----------- | ------ | ----------- |
-| HBN            | 170         | 25      | 146         | 3      | 142         |
-| LOC            | 125         | 20      | 107         | 7      | 98          |
-| Kids2Health    | 434         | 28      | 407         | 6      | 400         |
-| Total          | 729         | 73      | 659         | 16     | 640         |
+| Dataset      | N° in total | Ex (QC) | N° after QC | Ex (SC) | N° after SC |
+|--------------|-------------|---------|-------------|---------|-------------|
+| HBN          | 170         | 25      | 145         | 3       | 142         |
+| LOC          | 125         | 20      | 105         | 7       | 98          |
+| Kids2Health  | 434         | 28      | 406         | 6       | 400         |
+| **Total**    | **729**     | **73**  | **656**     | **16**  | **640**     |
 
 ## MRI Post-processing
 - DICOM data converted to NIfTI format using `dcm2niix` and  Python version 3.9 was used for data manipulation
