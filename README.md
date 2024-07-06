@@ -12,8 +12,9 @@ This repository contains information about the subjects and MRI data used in our
 |--------------|-------------|---------|-------------|---------|-------------|
 | HBN          | 170         | 25      | 145         | 3       | 142         |
 | LOC          | 125         | 20      | 105         | 7       | 98          |
-| Kids2Health  | 434         | 28      | 406         | 6       | 400         |
-| **Total**    | **729**     | **73**  | **656**     | **16**  | **640**     |
+| Kids2Health  | 211         | 7       | 204         | 3       | 201         |
+| **Total**    | **506**     | **52**  | **454**     | **13**  | **441**     |
+
 
 ## MRI Post-processing
 - DICOM data converted to NIfTI format using `dcm2niix` and  Python version 3.9 was used for data manipulation
