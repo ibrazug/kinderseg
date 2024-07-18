@@ -1,5 +1,8 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/639393019.svg)](https://zenodo.org/doi/10.5281/zenodo.11521841)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12773962.svg)](https://doi.org/10.5281/zenodo.12773962)
+
+
+
 
 ## Overview
 
@@ -23,7 +26,7 @@ To run the ShinyApp locally, follow these steps:
 2. **Download this repository** by clicking [here](https://github.com/ibrazug/kinderseg/archive/refs/heads/main.zip).
 3. **Navigate to the `shinyapp` folder** within the downloaded repository.
 4. **Open `app.R` using R Studio.**
-5. **Install the necessary libraries** by running `install.packages("shiny")` in the R console if you haven't already.
+5. **Install the shiny package** by running `install.packages("shiny")` in the R console if you haven't already.
 6. **Run the App** by clicking on the `Run App` button in R Studio.
 
 This will start the ShinyApp locally on your machine.
