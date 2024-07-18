@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: >-
+  KinderSeg: FastSurfer Database for Age-Specific Brain
+  Volumes in Healthy Children
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: 'Ibrahim '
+    family-names: Zughayyar
+    email: ibrahim.zughayyar@gmail.com
+    orcid: 'https://orcid.org/0009-0000-4598-8161'
+  - given-names: 'Andrea '
+    family-names: Dell'Orco
+    email: andrea.dellorco@charite.de
+    orcid: 'https://orcid.org/0000-0002-3964-8360'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.12773962
+repository-code: 'https://github.com/ibrazug/kinderseg/'
+keywords:
+  - freesurfer
+  - fastsurfer
+  - neuroradiology
+  - pediatrics
+license: MIT
+commit: 63370e0a1179889e0cb0fd3db40f252eb4d2f528
+version: v0.2
+date-released: '2024-07-18'
