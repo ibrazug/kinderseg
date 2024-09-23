@@ -1,8 +1,11 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12773962.svg)](https://doi.org/10.5281/zenodo.12773962)
 
+## Code for the paper:
 
+Zughayyar, I., Bauer, M., Güttler, C., Marcelino, A. L., Kühne, F., Buss, C., … Dell'Orco, A. (2024, September 9). A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children: A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients. https://doi.org/10.31219/osf.io/dw7p4
 
+https://osf.io/kj7hy/
 
 ## Overview
 
