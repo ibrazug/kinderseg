@@ -4,7 +4,7 @@
 
 # KinderSeg Docker
 
-This repository contains a Dockerfile for creating an environment to run KinderSeg, a processing pipeline for analyzing brain imaging data using FastSurfer and custom scripts. The environment is built on Ubuntu 20.04 and includes Miniconda for managing Python and R environments.It uses FastSurfer version 1.1.2 and a pruned version of FreeSurfer (the installation of a pruned version described [here](https://github.com/Deep-MI/FastSurfer/blob/v1.1.2/Docker/install_fs_pruned.sh)), in additon to the `asegstats2table` and `mri_segstats` utilities.
+This repository contains a Dockerfile for creating an environment to run KinderSeg, a processing pipeline for analyzing brain imaging data using FastSurfer and custom scripts. The environment is built on Ubuntu 20.04 and includes Miniconda for managing Python and R environments. It uses FastSurfer version 1.1.2 and a pruned version of FreeSurfer (the installation of a pruned version described [here](https://github.com/Deep-MI/FastSurfer/blob/v1.1.2/Docker/install_fs_pruned.sh)), in addition to the `asegstats2table` and `mri_segstats` utilities.
 
 
 ## Requirements
@@ -13,7 +13,7 @@ This repository contains a Dockerfile for creating an environment to run KinderS
 - `License.txt` file in the same directory as the Dockerfile
 - GPU (optional, but recommended)
 
- **_NOTE:_**  Ensure you have a valid FreeSurfer license. The license file should be placed in Docker folder mext to Dockerfile. You can can the license from [here](https://surfer.nmr.mgh.harvard.edu/registration.html)
+ **_NOTE:_**  Ensure you have a valid FreeSurfer license. The license file should be placed in Docker folder next to the Dockerfile. You can get the license from [here](https://surfer.nmr.mgh.harvard.edu/registration.html)
 
 
 ## Directory Structure
@@ -64,7 +64,7 @@ To run the KinderSeg pipeline, use the following command:
 bash
 
 ```
-docker run --gpus all --rm -v /home/user/my_mri_data:/data-v C:/Users/Ibrah/Downloads/output:/output kinderseg <subject_id> <age>
+docker run --gpus all --rm -v /home/user/my_mri_data:/data-v /home/user/output:/output kinderseg <subject_id> <age>
 ```
 **_IMPORTANT NOTE:_** my_mri_data: a folder with a *.nii.gz file
 - --gpus all: Use all available GPUs.
