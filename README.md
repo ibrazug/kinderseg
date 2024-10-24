@@ -3,7 +3,8 @@
 
 Code for the paper:
 ```
-Zughayyar, I., Bauer, M., Güttler, C., Marcelino, A. L., Kühne, F., Buss, C., … Dell'Orco, A. (2024, September 9).
+Zughayyar, I., Bauer, M., Güttler, C., Marcelino, A. L., Kühne, F., Buss, C., … Dell'Orco, A.
+(2024, September 9).
 A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children:
 A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients.
 
@@ -20,7 +21,7 @@ https://osf.io/kj7hy/
 
 - At least 5 GB of RAM
 - GPU
-- a valid FreeSurfer license** you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
+- a valid FreeSurfer license: you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
   
 #### Usage
 1. **Download this repository** by clicking [here](https://github.com/ibrazug/kinderseg/archive/refs/heads/main.zip).
