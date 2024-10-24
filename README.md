@@ -3,19 +3,32 @@
 
 Code for the paper:
 ```
-Zughayyar, I., Bauer, M., Güttler, C., Marcelino, A. L., Kühne, F., Buss, C., … Dell'Orco, A. (2024, September 9). A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children: A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients. https://doi.org/10.31219/osf.io/dw7p4
+Zughayyar, I., Bauer, M., Güttler, C., Marcelino, A. L., Kühne, F., Buss, C., … Dell'Orco, A. (2024, September 9).
+A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children:
+A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients.
+
+https://doi.org/10.31219/osf.io/dw7p4
 
 https://osf.io/kj7hy/
 ```
 
-### Dataset Statistics
 
-| Dataset      | N° in total | Ex (QC) | N° after QC | Ex (SC) | N° after SC |
-|--------------|-------------|---------|-------------|---------|-------------|
-| HBN          | 170         | 25      | 145         | 3       | 142         |
-| LOC          | 125         | 20      | 105         | 7       | 98          |
-| Kids2Health  | 211         | 7       | 204         | 3       | 201         |
-| **Total**    | **506**     | **52**  | **454**     | **13**  | **441**     |
+
+## Run Docker 
+
+#### Requirements
+
+- At least 5 GB of RAM
+- GPU
+- a valid FreeSurfer license** you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
+  
+#### Usage
+1. **Download this repository** by clicking [here](https://github.com/ibrazug/kinderseg/archive/refs/heads/main.zip).
+2. **Navigate to the `Docker` folder** within the downloaded repository.
+3. **Copy the  license to the directory** and make sure the file name is `license.txt`.
+4. **Open the terminal** run `docker build -t kinderseg .` 
+5. **Run the pipeline with this command** `docker run --gpus all --rm -v /home/user/my_mri_data:/data-v /home/user/output:/output kinderseg <subject_id> <age>`
+
 
 ## Run ShinyApp Locally
 
@@ -31,8 +44,18 @@ To run the ShinyApp locally, follow these steps:
 This will start the ShinyApp locally on your machine.
 
 
+## Dataset Statistics
 
-## MRI Post-processing
+| Dataset      | N° in total | Ex (QC) | N° after QC | Ex (SC) | N° after SC |
+|--------------|-------------|---------|-------------|---------|-------------|
+| HBN          | 170         | 25      | 145         | 3       | 142         |
+| LOC          | 125         | 20      | 105         | 7       | 98          |
+| Kids2Health  | 211         | 7       | 204         | 3       | 201         |
+| **Total**    | **506**     | **52**  | **454**     | **13**  | **441**     |
+
+
+
+### MRI Post-processing
 - DICOM data converted to NIfTI format using `dcm2niix` and  Python version 3.9 was used for data manipulation
 
 ### Segmentation Tools
@@ -51,7 +74,7 @@ This will start the ShinyApp locally on your machine.
 - `Python_environment.yml` Python env
 
 
-## Data Analysis
+### Data Analysis
 
 - R version 4.1.2  used for analysis
 - Libraries: ggplot2, tidyverse, viridis (R)
