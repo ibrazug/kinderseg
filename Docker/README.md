@@ -11,7 +11,7 @@ This repository contains a Dockerfile for creating an environment to run KinderS
 
 - At least 5 GB of RAM
 - `License.txt` file in the same directory as the Dockerfile
-- GPU (optional, but recommended)
+- GPU 
 
  **_NOTE:_**  Ensure you have a valid FreeSurfer license. The license file should be placed in Docker folder next to the Dockerfile. You can get the license from [here](https://surfer.nmr.mgh.harvard.edu/registration.html)
 
