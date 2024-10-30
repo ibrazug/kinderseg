@@ -20,7 +20,7 @@ https://osf.io/kj7hy/
 #### Requirements
 
 - At least 5 GB of RAM
-- GPU
+- GPU (optional, but recommended)
 - a valid FreeSurfer license: you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
   
 #### Usage
@@ -28,8 +28,17 @@ https://osf.io/kj7hy/
 2. **Navigate to the `Docker` folder** within the downloaded repository.
 3. **Copy the  license to the directory** and make sure the file name is `license.txt`.
 4. **Open the terminal** run `docker build -t kinderseg .` 
-5. **Run the pipeline with this command** `docker run --gpus all --rm -v /home/user/my_mri_data:/data-v /home/user/output:/output kinderseg <subject_id> <age>`
+5. **Run the pipeline with the following command** 
 
+```
+docker run --gpus all --rm \
+    -v </home/user/my_mri_data>:/data \
+    -v </home/user/output>:/output \
+    kinderseg \
+    --age <age> \
+    --threads <threads>
+
+```
 
 ## Run ShinyApp Locally
 
@@ -55,19 +64,16 @@ This will start the ShinyApp locally on your machine.
 | **Total**    | **506**     | **52**  | **454**     | **13**  | **441**     |
 
 
+## MRI Segmentation and Volumetric Analysis of the dataset subjects
 
 ### MRI Post-processing
 - DICOM data converted to NIfTI format using `dcm2niix` and  Python version 3.9 was used for data manipulation
 
 ### Segmentation Tools
 
-1. **FreeSurfer v6.0:**
-   - Ran on a Slurm cluster with a 16-core Intel Xeon E5-2650 CPU
-   - Utilized GNU Parallel for parallel processing
+1. **FreeSurfer v6.0:** Ran on a Slurm cluster with a 16-core Intel Xeon E5-2650 CPU, Utilized GNU Parallel for parallel processing
 
-2. **FastSurfer (V1):**
-   - Employed for accelerated brain segmentation
-   - Utilized FastSurferCNN pipeline on a workstation with an AMD 3970X CPU and NVIDIA GeForce RTX 3090 GPU
+2. **FastSurfer (V1):** Utilized FastSurferCNN pipeline on a workstation with an AMD 3970X CPU and NVIDIA GeForce RTX 3090 GPU
 
 ### Files:
 - `01.generate_segmentation_outputs (freesurfer and fastsurfer).ipynb`  for MRI data segmentation and volume calculation using Freesurfer and Fastsurfer, generating volumetric statistics tables for both methods

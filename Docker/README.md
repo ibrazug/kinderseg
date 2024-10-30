@@ -64,7 +64,6 @@ To run the KinderSeg pipeline, use the following command:
 bash
 
 ```
-docker run --gpus all --rm -v /home/user/my_mri_data:/data-v /home/user/output:/output kinderseg <subject_id> <age>
 
 docker run --gpus all --rm \
     -v </home/user/my_mri_data>:/data \
@@ -73,13 +72,7 @@ docker run --gpus all --rm \
     --age <age> \
     --threads <threads>
 
-example for running it without gput on 2 threads
-docker run --rm \
-  -v /home/user/documents/sub-xxx/anat:/data \
-  -v /home/user/documents/output:/output \
-  kinderseg \
-  --age 10.5 \
-  --threads 2
+
 
 
 ```
@@ -92,7 +85,7 @@ docker run --rm \
 
 Parameters
 <age>: The age of the subject (must be between 3 and 19).
-<threads> (optional; default = 4): The ID of the subject you are processing.
+<threads> (optional; default = 4): number of threads allocated for FastSurfer.
 
 
 
