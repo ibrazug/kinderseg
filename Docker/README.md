@@ -54,7 +54,7 @@ The output of the KinderSeg pipeline is organized as follows:
 
 - <subject_id>: Folder for each subject processed.
 - GrowthChart.jpg: Growth chart image for the subject.
-- stats: Contains statistical output files.
+- stats: Contains statistical output files. 16_Volumes.csv includes the absolute volume of each ROI.
 - masks: New folder for storing generated mask files.
 - kinderseglogYYYYMMDD_HHMMSS.log: Log file containing processing details and duration.
 - modified_FreeSurferColorLUT_16ROI.txt: This can be used to name the masks correctly while viewing with [Freeview](https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide/FreeviewGeneralUsage)
@@ -65,105 +65,39 @@ bash
 
 ```
 docker run --gpus all --rm -v /home/user/my_mri_data:/data-v /home/user/output:/output kinderseg <subject_id> <age>
+
+docker run --gpus all --rm \
+    -v </home/user/my_mri_data>:/data \
+    -v </home/user/output>:/output \
+    kinderseg \
+    --age <age> \
+    --threads <threads>
+
+example for running it without gput on 2 threads
+docker run --rm \
+  -v /home/user/documents/sub-xxx/anat:/data \
+  -v /home/user/documents/output:/output \
+  kinderseg \
+  --age 10.5 \
+  --threads 2
+
+
 ```
 **_IMPORTANT NOTE:_** my_mri_data: a folder with a *.nii.gz file
-- --gpus all: Use all available GPUs.
+- --gpus all (optional but highly recommended if a GPU is available): Use all available GPUs.
 - --rm: Automatically remove the container when it exits.
 - -v: Mounts host directories for input and output.
+- - /home/user/my_mri_data:/data: Mounts the local directory containing the MRI data (*.nii.gz files) as /data in the container.
+- - /home/user/documents/output:/output: Mounts the local output directory as /output in the container.
 
 Parameters
-<subject_id>: The ID of the subject you are processing.
-<age>: The age of the subject (must be between 4 and 19).
-
+<age>: The age of the subject (must be between 3 and 19).
+<threads> (optional; default = 4): The ID of the subject you are processing.
 
 
 
 ## TODO 
-- check if fastsurfer swgmentation is done crrectly before running python and R scripts
+- check if fastsurfer segmentation is done crrectly before running python and R scripts
 - specfiy conda version in RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
 - specfiy lapy version in environment.yml
-
-
-
-## Examples on Windows 11
-- if you run the script and and output volume is refrencing a fastsurfer output with volstat. The masks and the growth chart gets generated. It takes a few second to generate the output
-
-```
-docker run --gpus all --rm -v C:/Users/<user>/GitHub/sub-N060/anat:/data -v C:/Users/<user>/GitHub/output:/output kinderseg sub-N060 11.18
-..
-╔═══════════════════════════════════════════════╗
-║                 K I N D E R S E G             ║
-╚═══════════════════════════════════════════════╝
-
-Kinderseg initiated at Tue Oct 22 08:35:31 UTC 2024 for sub-N060, age: 11.18
-========================================
-INFO: /root/matlab/startup.m does not exist ... creating
-Processing subject: sub-N060 with FastSurfer...
-Segmentation for subject sub-N060 found! Skipping the segmentaion.
-========================================
-Processing subject: Generating volume stats table for sub-N060
-volume stats table for sub-N060 found! Skipping the process.
-========================================
-2024-10-22 08:35:32,707 - INFO - Skipping sub-N060: 'masks' folder exists
-========================================
-Warning message:
-package ‘ggplot2’ was built under R version 4.3.3 
-
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-Warning message:
-package ‘dplyr’ was built under R version 4.3.3 
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ lubridate 1.9.3     ✔ tibble    3.2.1
-✔ purrr     1.0.2     ✔ tidyr     1.3.1
-✔ readr     2.1.5     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-Warning messages:
-1: package ‘tidyverse’ was built under R version 4.3.3 
-2: package ‘tibble’ was built under R version 4.3.3 
-3: package ‘tidyr’ was built under R version 4.3.3 
-4: package ‘readr’ was built under R version 4.3.3 
-5: package ‘purrr’ was built under R version 4.3.3 
-6: package ‘stringr’ was built under R version 4.3.3 
-7: package ‘forcats’ was built under R version 4.3.3 
-8: package ‘lubridate’ was built under R version 4.3.3 
-NOTE: Either Arial Narrow or Roboto Condensed fonts are required to use these themes.
-      Please use hrbrthemes::import_roboto_condensed() to install Roboto Condensed and
-      if Arial Narrow is not on your system, please see https://bit.ly/arialnarrow
-
-Attaching package: ‘zoo’
-
-The following objects are masked from ‘package:base’:
-
-    as.Date, as.Date.numeric
-
-Warning message:
-package ‘zoo’ was built under R version 4.3.3 
-`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'
-Warning messages:
-1: Removed 64 rows containing non-finite outside the scale range
-(`stat_smooth()`). 
-2: Removed 64 rows containing non-finite outside the scale range
-(`stat_smooth()`). 
-3: Removed 64 rows containing non-finite outside the scale range
-(`stat_smooth()`). 
-========================================
-Kinderseg processing completed at Tue Oct 22 08:35:37 UTC 2024
-Total duration: 0 hours, 0 minutes, 6 seconds
-
-```
 

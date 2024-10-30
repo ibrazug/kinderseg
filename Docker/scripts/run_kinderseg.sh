@@ -1,32 +1,52 @@
 #!/bin/bash
 
-# Check if a subject ID is provided
-if [ -z "$1" ]; then
-    echo "Please provide subject id in this format : $0 <subject_id> <age>"
+# Default values
+age=""
+threads=4  # Default value for threads
+sub=""
+
+# Check if any .nii.gz file exists in the /data directory
+if ls /data/*.nii.gz 1> /dev/null 2>&1; then
+    # Get the first .nii.gz file in the directory without the extension
+    sub=$(basename /data/*.nii.gz | head -n 1 | sed 's/\(.*\)\.nii\.gz/\1/')
+else
+    echo "Error: No .nii.gz files found in /data directory."
+    exit 1
+fi
+
+# Parse arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --age)
+            age="$2"
+            shift 2
+            ;;
+        --threads)
+            threads="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown parameter: $1"
+            exit 1
+            ;;
+    esac
+done
+
+# Check if age was provided and within range
+if [ -z "$age" ]; then
+    echo "Error: --age is required."
+    exit 1
+elif [ "$age" -lt 3 ] || [ "$age" -gt 19 ]; then
+    echo "Error: Age should be between 3 and 19."
     exit 1
 fi
 
 
-# Validate that age is a number (integer or float)
-if ! [[ "$2" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
-    echo "Age must be a number."
-    exit 1
-fi
-
-# Check if the age is between 4 and 19 using bc for float comparison
-if (( $(echo "$2 < 4" | bc -l) )) || (( $(echo "$2 > 19" | bc -l) )); then
-    echo "Age must be between 4 and 19."
-    exit 1
-fi
-
-
-# Define the subject ID
-sub="$1"
-age="$2"
 
 
 export src_dir="/data"                    # Directory with subjects (this will be a volume)
 export dest_dir="/output"                 # Destination directory (this will be a volume)
+
 
 # Create destination directory if it doesn't exist
 mkdir -p "${dest_dir}/${sub}"
@@ -40,20 +60,20 @@ exec > >(tee -a "$log_file") 2>&1
 # Record start time
 start_time=$(date +%s)
 
-# Cool start message
+
 echo "
 ╔═══════════════════════════════════════════════╗
 ║                 K I N D E R S E G             ║
 ╚═══════════════════════════════════════════════╝
 "
-echo "Kinderseg initiated at $(date) for $sub, age: $age"
+echo "Kinderseg initiated at $(date) for $sub, Age: $age, Threads: $threads"
 echo "========================================"
 
 source activate kinderseg
 FREESURFER_HOME="/opt/freesurfer"
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
-bash "/opt/scripts/run_fastsurfer_volstats.sh" "$sub"
+bash "/opt/scripts/run_fastsurfer_volstats.sh" "$sub" "$threads"
 
 
 

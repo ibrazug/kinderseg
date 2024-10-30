@@ -107,6 +107,11 @@ final_ggplot <- function(eTIV_file, volume_stat_file, age, sex) {
   vols$VentralDC <- vols$VentralDC*2
 
   
+#save cols
+csv_path <- file.path(dest_dir, sub,"stats", "16_Volumes.csv")
+write.csv(vols, file = csv_path, row.names = FALSE)
+cat("Data exported to", csv_path, "successfully!\n")
+
   #normalization 
   
   vols <- vols %>%   mutate(
@@ -145,7 +150,7 @@ final_ggplot <- function(eTIV_file, volume_stat_file, age, sex) {
     mutate(p05 = mov_perc$p05*100, p50 = mov_perc$p50*100, p95 = mov_perc$p95*100) %>%
     
     ggplot(aes(x=age, y=Volume, color=hemisphere))+
-    geom_jitter(alpha=0.3, size =3, shape =19)+
+    geom_jitter(alpha=0.05, size =3, shape =19)+
     geom_smooth(aes(x=age, y=p05), color='black', se=F, method='loess', span = 1, linewidth=1.5)+
     geom_smooth(aes(x=age, y=p50), color='black', se=F, method='loess', span = 1, linewidth=1.5)+
     geom_smooth(aes(x=age, y=p95), color='black', se=F, method='loess', span = 1, linewidth=1.5)+
@@ -191,3 +196,7 @@ plot <- final_ggplot(eTIV_file, volume_stat_file, age, sex)
 # Save to ping
 jpg_path <- file.path(dest_dir, sub, "GrowthChart.jpg")
 ggsave(filename = jpg_path, plot = plot, width = 18, height = 18)
+cat("Data exported to", jpg_path, "successfully!\n")
+
+
+

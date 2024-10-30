@@ -8,8 +8,10 @@ fastsurfer_dir="/opt/FastSurfer"
 mkdir -p $dest_dir
 
 
-# Define the subject ID
+# Define the subject ID and threads
 sub="$1"
+threads="$2"
+
 echo "Processing subject: $sub with FastSurfer..."
 # Check if the segmentation already exists
 if [ ! -e "${dest_dir}/${sub}/stats/aparc.DKTatlas+aseg.deep.volume.stats" ]; then 
@@ -27,7 +29,7 @@ if [ ! -e "${dest_dir}/${sub}/stats/aparc.DKTatlas+aseg.deep.volume.stats" ]; th
     # Run FastSurfer segmentation
     ./run_fastsurfer.sh --seg_only \
                         --vol_segstats \
-                        --parallel --threads 4 \
+                        --parallel --threads "$threads" \
                         --sd $dest_dir \
                         --sid $sub \
                         --t1 $t1
