@@ -13,8 +13,6 @@ https://doi.org/10.31219/osf.io/dw7p4
 https://osf.io/kj7hy/
 ```
 
-
-
 ## Run Docker 
 
 #### Requirements
@@ -24,13 +22,11 @@ https://osf.io/kj7hy/
 - a valid FreeSurfer license: you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
   
 #### Usage
-1. **Download this repository** by clicking [here](https://github.com/ibrazug/kinderseg/archive/refs/heads/main.zip).
-2. **Navigate to the `Docker` folder** within the downloaded repository.
-3. **Copy the  license to the directory** and make sure the file name is `license.txt`.
-4. **Open the terminal** run `docker build -t kinderseg .` 
-5. **Run the pipeline with the following command** 
-
 ```
+git clone https://github.com/ibrazug/kinderseg.git
+cd Docker
+cp </path/to/your/license.txt> .
+docker build -t kinderseg .
 docker run --gpus all --rm \
     -v </home/user/my_mri_data>:/data \
     -v </home/user/output>:/output \
