@@ -3,7 +3,8 @@
 
 Code for the paper:
 ```
-Zughayyar, I., Bauer, M., Güttler, C., Marcelino, A. L., Kühne, F., Buss, C., … Dell'Orco, A.
+ Ibrahim Zughayyar, Martin Bauer, Christopher Güttler, Ana Luísa Marcelino, Fabienne Kühne, Claudia Buss, Christine Heim, Annette Aigner, 
+ Anna Tietze, and Andrea Dell'Orco 
 (2024, September 9).
 A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children:
 A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients.
