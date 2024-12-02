@@ -20,9 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip v1.1.2.zip -d /opt && \
     rm v1.1.2.zip && \
     mv /opt/FastSurfer-1.1.2 /opt/FastSurfer && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
-    bash miniconda.sh -b -p /opt/conda && \
-    rm miniconda.sh && \
+    wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O miniforge.sh && \
+    bash miniforge.sh -b -p /opt/conda && \
+    rm miniforge.sh && \
     apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set PATH
