@@ -26,9 +26,17 @@ docker run --gpus all --rm \
     -v <output_dir>:/output \
     kinderseg \
     --age <age> \
-    --threads <threads>
+    --threads <threads, optional, default=4>
 ```
-`nifti_data` can be either a directory containing NIfTI files or a single NIfTI file. The output will be saved in the `output` directory in a subdirectory named after the input NIfTI file, without the extension.
+
+`nifti_data` can be either a directory containing NIfTI files or a single NIfTI file. The output will be saved in the `output` directory in a subdirectory named after the input NIfTI file, without the extension. Example:
+
+```
+docker run --gpus all --rm \
+    -v $PWD/sub-001/ses-01/anat/sub-001_ses-01_T1w.nii.gz:/data/sub-001_ses-01_T1w.nii.gz \
+    -v ./output:/output \
+    kinderseg --age 12
+```
 
 ## Run with Apptainer/Singularity
 
