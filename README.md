@@ -1,7 +1,13 @@
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12773962.svg)](https://doi.org/10.5281/zenodo.12773962)
+# KinderSeg: FastSurfer Database for Age-Specific Brain Volumes in Healthy Children
 
-Code for the paper:
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+[![Repository DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.12773962-blue.svg)](https://doi.org/10.5281/zenodo.12773962)
+[![Preprint DOI](https://img.shields.io/badge/DOI-10.31219/osf.io/dw7p4-blue.svg)](https://doi.org/10.31219/osf.io/dw7p4)
+
+
+### Code for the paper:
 ```
  Ibrahim Zughayyar, Martin Bauer, Christopher Güttler, Ana Luísa Marcelino, Fabienne Kühne, Claudia Buss, Christine Heim, Annette Aigner, 
  Anna Tietze, and Andrea Dell'Orco 
