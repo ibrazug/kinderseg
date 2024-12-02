@@ -14,28 +14,43 @@ https://doi.org/10.31219/osf.io/dw7p4
 https://osf.io/kj7hy/
 ```
 
-## Run Docker 
+## Run with Docker 
 
-#### Requirements
-
-- At least 5 GB of RAM
-- GPU (optional, but recommended)
-- a valid FreeSurfer license: you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
-  
-#### Usage
 ```
 git clone https://github.com/ibrazug/kinderseg.git
 cd Docker
 cp </path/to/your/license.txt> .
 docker build -t kinderseg .
 docker run --gpus all --rm \
-    -v </home/user/my_mri_data>:/data \
-    -v </home/user/output>:/output \
+    -v <nifti_data>:/data \
+    -v <output_dir>:/output \
     kinderseg \
     --age <age> \
     --threads <threads>
+```
+`nifti_data` can be either a directory containing NIfTI files or a single NIfTI file. The output will be saved in the `output` directory in a subdirectory named after the input NIfTI file, without the extension.
+
+## Run with Apptainer/Singularity
 
 ```
+git clone https://github.com/ibrazug/kinderseg.git
+cd Docker
+cp </path/to/your/license.txt> .
+docker build -t kinderseg .
+apptainer build kinderseg.sif docker-daemon://kinderseg:latest 
+apptainer run --nv kinderseg.sif \
+    -B <nifti_data>:/data \
+    -B <output_dir>:/output \
+    --age <age> \
+    --threads <threads>
+```
+
+#### Requirements
+
+- At least 5 GB of RAM
+- GPU (optional, but recommended)
+- a valid FreeSurfer license: you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
+
 
 ## Run ShinyApp Locally
 
