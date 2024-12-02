@@ -98,7 +98,7 @@ def create_masks(sub_dir):
     for roi in our_map.keys():
         values = sumroi_num[roi]
         for v in values:
-            mask_arr = np.where(mask_arr == v, our_map[roi] * 1e4, mask_arr)
+            mask_arr = np.where(mask_arr == v, our_map[roi] * 1e4, mask_arr).astype(int)
 
     mask_arr = np.where(mask_arr < 1e4, 0, mask_arr) / 1e4
     mask_nii = nib.Nifti1Image(mask_arr, header=mask_mgz.header, affine=mask_mgz.affine)
