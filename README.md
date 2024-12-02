@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 [![Repository DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.12773962-blue.svg)](https://doi.org/10.5281/zenodo.12773962)
-[![Preprint DOI](https://img.shields.io/badge/DOI-10.31219/osf.io/dw7p4-blue.svg)](https://doi.org/10.31219/osf.io/dw7p4)
+
 
 
 ### Code for the paper:
@@ -19,6 +19,7 @@ https://doi.org/10.31219/osf.io/dw7p4
 
 https://osf.io/kj7hy/
 ```
+[![Preprint DOI](https://img.shields.io/badge/DOI-10.31219/osf.io/dw7p4-blue.svg)](https://doi.org/10.31219/osf.io/dw7p4)
 
 ## Run with Docker 
 
