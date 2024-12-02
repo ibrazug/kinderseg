@@ -28,3 +28,30 @@ license: MIT
 commit: 63370e0a1179889e0cb0fd3db40f252eb4d2f528
 version: v0.2
 date-released: '2024-07-18'
+references:
+  - type: article
+    authors:
+      - given-names: 'Ibrahim'
+        family-names: Zughayyar
+      - given-names: 'Martin'
+        family-names: Bauer
+      - given-names: 'Christopher'
+        family-names: Güttler
+      - given-names: 'Ana Luísa'
+        family-names: Marcelino
+      - given-names: 'Fabienne'
+        family-names: Kühne
+      - given-names: 'Claudia'
+        family-names: Buss
+      - given-names: 'Christine'
+        family-names: Heim
+      - given-names: 'Annette'
+        family-names: Aigner
+      - given-names: 'Anna'
+        family-names: Tietze
+      - given-names: 'Andrea'
+        family-names: Dell'Orco
+    title: "A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children: A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients"
+    date: '2024-09-09'
+    doi: 10.31219/osf.io/dw7p4
+    url: 'https://doi.org/10.31219/osf.io/dw7p4'
