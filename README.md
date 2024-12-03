@@ -25,7 +25,7 @@ https://osf.io/kj7hy/
 
 ```
 git clone https://github.com/ibrazug/kinderseg.git
-cd Docker
+cd kinderseg/Docker
 cp </path/to/your/license.txt> .
 docker build -t kinderseg .
 docker run --gpus all --rm \
@@ -49,7 +49,7 @@ docker run --gpus all --rm \
 
 ```
 git clone https://github.com/ibrazug/kinderseg.git
-cd Docker
+cd kinderseg/Docker
 cp </path/to/your/license.txt> .
 docker build -t kinderseg .
 apptainer build kinderseg.sif docker-daemon://kinderseg:latest 

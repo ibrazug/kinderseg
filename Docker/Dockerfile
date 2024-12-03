@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set PATH
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH=/opt/conda/bin:$PATH
 
 WORKDIR /opt
 
