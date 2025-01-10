@@ -158,8 +158,8 @@ cat("Data exported to", csv_path, "successfully!\n")
                alpha = 0.8, size = 10) +
     
     facet_wrap(~ROI, scale='free_y')+
-    ylab("Percent Relative Volume (%)") + 
-    xlab("Age (year)")+
+    ylab("ROI Volume / eTIV %") + 
+    xlab("Age (years)")+
     theme_ipsum()+
     scale_x_continuous(breaks = c(seq(0, 18, by = 3))) + 
     scale_y_continuous(breaks = breaks_four, labels = function(x) sprintf("%.2f", x)) +
