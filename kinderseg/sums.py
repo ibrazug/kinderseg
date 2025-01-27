@@ -87,9 +87,11 @@ class SumVolTable:
         csv_path = os.path.join(module_dir, 'sumroi_mapping.csv')
         df = pd.read_csv(csv_path)
         if 'VINN' in self.src:
-            df = df[['VINN_ROI', 'Sum_ROI']]
+            self.src = 'VINN_ROI'
+            df = df[[self.src, 'Sum_ROI']]
         elif '7' in self.src:
-            df = df[['FS7_ROI', 'Sum_ROI']]
+            self.src = 'FS7_ROI'
+            df = df[[self.src, 'Sum_ROI']]
         return df
     
     def transform(self, src_table: pd.DataFrame, index_dir: str = 'sids', eTIV: bool = True) -> pd.DataFrame:
@@ -104,21 +106,19 @@ class SumVolTable:
             _type_: _description_
         """
         self.index_dir = index_dir
-        self.table = src_table.copy()
+        self.table = pd.DataFrame()
         self.table[self.index_dir] = src_table[self.index_dir]
         if eTIV:
-            if 'eTIV' not in src_table.columns or 'EstimatedTotalIntraCranialVol' not in src_table.columns:
-                raise ValueError('eTIV column not found in the table')
-            elif 'eTIV' in src_table.columns:
+            if 'eTIV' in src_table.columns:
                 self.table['eTIV'] = src_table['eTIV']
             elif 'EstimatedTotalIntraCranialVol' in src_table.columns:
                 self.table['eTIV'] = src_table['EstimatedTotalIntraCranialVol']
                 
         rois_cat = set(self.mapping['Sum_ROI'].values)
         for roi in rois_cat:
-            orig_rois = self.mapping[self.mapping['Sum_ROI'] == roi]['VINN_ROI'].values
-            self.table[roi] = self.table[orig_rois].sum(axis=1)
-        return self.table
+            orig_rois = self.mapping[self.mapping['Sum_ROI'] == roi][self.src].values
+            self.table[roi] = src_table[orig_rois].sum(axis=1)
+        return self
     
     def to_filename(self, filename : str) -> str:
         self.table.to_csv(filename, index=False)
