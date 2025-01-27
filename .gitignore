@@ -2,8 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,r,jupyternotebooks
 
 ## Development, temp, and csv files
-./dev/
-./stats/
+dev/*
+stats/*
 
 .vscode
 Docker/license.txt
