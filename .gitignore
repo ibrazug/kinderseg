@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,r,jupyternotebooks
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,r,jupyternotebooks
 
+## Development, temp, and csv files
+./dev/
+./stats/
 
 .vscode
 Docker/license.txt
