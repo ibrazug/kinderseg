@@ -63,6 +63,12 @@ class SumNiiRois:
     def to_filename(self, filename):
         nib.save(self.sum_nii, filename)
         return filename
+    
+    def __repr__(self):
+        return self.sum_nii.__repr__()
+    
+    def __str__(self):
+        return self.sum_nii.__str__()
 
 
 class SumVolTable:
@@ -123,3 +129,9 @@ class SumVolTable:
     def to_filename(self, filename : str) -> str:
         self.table.to_csv(filename, index=False)
         return filename
+    
+    def __repr__(self):
+        return self.table.__repr__()
+    
+    def __str__(self):
+        return self.table.__str__()
