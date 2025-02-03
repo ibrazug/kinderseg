@@ -79,8 +79,8 @@ Ventricles,4th-Ventricle,4th-Ventricle,4th-Ventricle,15,15,12
 Ventricles,CSF,CSF,CSF,24,24,12
 VentralDC,Left-VentralDC,Left-VentralDC,Left-VentralDC,28,28,13
 VentralDC,Right-VentralDC,Right-VentralDC,Right-VentralDC,60,60,13
-WM,Left-Cerebral-White-Matter,Left-Cerebellum-White-Matter,Left-Cerebral-White-Matter,2,2,14
-WM,Right-Cerebral-White-Matter,Right-Cerebellum-White-Matter,Right-Cerebral-White-Matter,41,41,14
+WM,Left-Cerebral-White-Matter,lhCerebralWhiteMatterVol,Left-Cerebral-White-Matter,2,2,14
+WM,Right-Cerebral-White-Matter,rhCerebralWhiteMatterVol,Right-Cerebral-White-Matter,41,41,14
 Brainstem,Brain-Stem,Brain-Stem,Brain-Stem,16,16,15
 Temporal,Left-Amygdala,Left-Amygdala,Left-Amygdala,18,18,16
 Temporal,Right-Amygdala,Right-Amygdala,Right-Amygdala,54,54,16
