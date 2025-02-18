@@ -49,7 +49,7 @@ class SumNiiRois:
         #     orig_nums = self.mapping[self.mapping['Sum_N'] == roi_num]['VINN_N'].values
         #     self.sum_data += np.where(np.isin(self.src_data, orig_nums), roi_num*1e5, 0) # Multiply by 1e5 to avoid overlap
         def __process_roi(roi_num):
-            orig_nums = self.mapping[self.mapping['Sum_N'] == roi_num]['VINN_N'].values
+            orig_nums = self.mapping[self.mapping['Sum_N'] == roi_num][self.mapping.columns[0]].values
             return np.where(np.isin(self.src_data, orig_nums), roi_num*1e5, 0)
 
         
