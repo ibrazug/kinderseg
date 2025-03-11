@@ -35,7 +35,7 @@ docker run --gpus all --rm \
     --age <age> \
     --threads <threads, optional, default=4>
 ```
- IMPORTANT NOTE: --threads used to define the number of threads per hemisphere, it now defines the number of threads in total!
+ IMPORTANT NOTE: --threads is used to define the number of threads in total. not per hemisphere. 
 
 
 `nifti_data` can be either a directory containing NIfTI files or a single NIfTI file. The output will be saved in the `output` directory in a subdirectory named after the input NIfTI file, without the extension. Example:
@@ -67,7 +67,7 @@ apptainer run --nv kinderseg.sif \
 - At least 5 GB of RAM
 - GPU (optional, but recommended)
 - a valid FreeSurfer license: you can get one for free by clicking [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
-
+- we also provided Docker.amd version for AMD chips. 
 
 
 
@@ -98,9 +98,6 @@ apptainer run --nv kinderseg.sif \
 
 - R version 4.1.2  used for analysis
 - Libraries: ggplot2, tidyverse, viridis (R)
-
-
-
 
 
 
