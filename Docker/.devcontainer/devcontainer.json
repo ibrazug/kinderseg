@@ -1,0 +1,33 @@
+{
+	"name": "FastSurfer with KinderSeg",
+	"build": {
+		"dockerfile": "../Dockerfile" // Assuming the Dockerfile is in the root of the project
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				// Add any specific VS Code settings you'd like to configure for the container here
+			},
+			"extensions": [
+				// Add any VS Code extensions you want available in your container
+				"ms-vscode.cpptools",
+				"ms-python.python"
+			]
+		}
+	},
+	"mounts": [
+		// Mount the local directories to the container
+		"source=/home/hummus/Documents/sub-NDARJW989EM6,target=/data,type=bind",
+		"source=/home/hummus/Documents/output,target=/output,type=bind"
+	],
+	"remoteUser": "root", // Replace with the name of the non-root user in the Docker container
+	"postCreateCommand": "chmod +x /fastsurfer/kinderseg/scripts/run_kinderseg.sh", // Ensures the script has execute permissions
+	"forwardPorts": [
+		8080
+	],
+	"shutdownAction": "none",
+	"runArgs": [
+		"--gpus",
+		"all" // Enable GPU support for the container
+	]
+}

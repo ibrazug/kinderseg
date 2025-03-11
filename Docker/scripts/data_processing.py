@@ -42,12 +42,11 @@ sumroi = {
     'Thalamus': ['Left.Thalamus', 'Right.Thalamus'],
     'Cerebellum': ['Left.Cerebellum.White.Matter', 'Right.Cerebellum.White.Matter', 'Left.Cerebellum.Cortex',
                    'Right.Cerebellum.Cortex'],
-    'CorpusCallosum': ['CC_Posterior', 'CC_Mid_Posterior', 'CC_Central', 'CC_Mid_Anterior', 'CC_Anterior'],
     'Ventricles': ['Left.Lateral.Ventricle', 'Right.Lateral.Ventricle', 'Left.Inf.Lat.Vent',
                    'Right.Inf.Lat.Vent', 'Left.choroid.plexus', 'Right.choroid.plexus', '3rd.Ventricle',
                    '4th.Ventricle', 'CSF'],
     'VentralDC': ['Left.VentralDC', 'Right.VentralDC'],
-    'WM': ['Left.Cerebral.White.Matter', 'Right.Cerebral.White.Matter'],
+    'WM': ['Left.Cerebral.White.Matter', 'Right.Cerebral.White.Matter', 'CC_Posterior', 'CC_Mid_Posterior', 'CC_Central', 'CC_Mid_Anterior', 'CC_Anterior'],
     'Brainstem': ['Brain.Stem'],
     'Temporal': ['Left-Amygdala', 'Right-Amygdala', 'ctx-lh-entorhinal', 'ctx-lh-fusiform', 'ctx-lh-inferiortemporal',
                  'ctx-lh-middletemporal', 'ctx-lh-parahippocampal', 'ctx-lh-superiortemporal',
@@ -81,7 +80,7 @@ sumroi_num = {roi: [d_inv[j.replace('.', '-')] for j in sumroi[roi]] for roi in 
 
 # Function to convert MGZ to NIfTI
 def convert_mgz_to_nii(sub_dir):
-    t1w_mgz = nib.load(os.path.join(sub_dir, 'mri/T1.mgz'))
+    t1w_mgz = nib.load(os.path.join(sub_dir, 'mri/orig.mgz'))
     t1w_nii = nib.Nifti1Image(t1w_mgz.get_fdata(), header=t1w_mgz.header, affine=t1w_mgz.affine)
     sid = os.path.basename(os.path.normpath(sub_dir))
     dest_fullpath = os.path.join(dest_dir, sid,'masks', 'T1.nii.gz')
@@ -92,7 +91,7 @@ def convert_mgz_to_nii(sub_dir):
 # Function to create summary and individual masks
 def create_masks(sub_dir):
     sid = os.path.basename(os.path.normpath(sub_dir))
-    mask_mgz = nib.load(os.path.join(sub_dir, 'mri/aparc.DKTatlas+aseg.deep.withCC.mgz'))
+    mask_mgz = nib.load(os.path.join(sub_dir, 'mri/aparc.DKTatlas+aseg.deep.mgz'))
     mask_arr = mask_mgz.get_fdata().copy()
 
     for roi in our_map.keys():

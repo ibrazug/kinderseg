@@ -1,5 +1,5 @@
-# Extend FastSurfer's CUDA image
-FROM deepmi/fastsurfer:cuda-v2.4.2
+# Extend FastSurfer's ROCm image (for AMD GPUs)
+FROM deepmi/fastsurfer:rocm-v2.4.2
 
 # Switch to root to perform installations and copy files
 USER root
