@@ -95,11 +95,35 @@ apptainer run --nv kinderseg.sif \
 
 ### Data Analysis
 
+
 - R version 4.1.2  used for analysis
 - Libraries: ggplot2, tidyverse, viridis (R)
 
 
 
+
+
+
+## KinderSeg Module Files
+
+The `kinderseg` directory contains the following key files and scripts:
+
+1. **`metrics.py`**:  
+   - Implements metrics and evaluation methods for comparing segmented brain volumes.  
+   - Includes the `DiceNiiRois` class for calculating the Dice similarity coefficient between ROIs in NIfTI files.  
+   - Outputs a Pandas DataFrame with the Dice similarity between all ROIs.  
+
+2. **`sums.py`**:  
+   - Contains utility classes for summarizing region of interest (ROI) data and volume tables.  
+   - Classes:  
+     - `SumNiiRois`: Summarizes ROIs as defined in the `sumroi_mapping.csv` file and generates output NIfTI files.  
+     - `SumVolTable`: Summarizes volume tables (from FastSurfer and FreeSurfer) based on mapped ROIs, creating CSV output.  
+   - Uses parallel processing to speed up calculations and ROI summarization.  
+
+3. **`sumroi_mapping.csv`**:  
+   - A CSV file that contains mappings between raw ROIs and summarized ROIs.  
+   - Supports mappings from VINN and FreeSurfer 7 (FS7) formats.  
+   - Used by `sums.py` to transform and summarize volume data efficiently.  
 
 
 
