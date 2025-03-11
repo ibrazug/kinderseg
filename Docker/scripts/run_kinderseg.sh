@@ -1,5 +1,30 @@
 #!/bin/bash
 
+
+# Function to display help
+function show_help {
+    echo "Usage: $0 [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  --age AGE        Age of the subject (required, between 3 and 19)"
+    echo "  --threads THREAD Number of threads to use (default: 4)"
+    echo "  --help           Show this help message"
+    echo ""
+    echo "This script processes neuroimaging data in .nii.gz format located in the /data directory."
+    echo "It uses FreeSurfer, FastSurfer, and Python/R scripts for data processing and analysis."
+    echo "The output will be stored in the /output directory with a log file."
+    echo ""
+}
+
+# Check for --help flag and show help if present
+if [[ "$1" == "--help" ]]; then
+    show_help
+    exit 0
+fi
+
+#set -euo pipefail
+
+
 # Default values
 age=""
 threads=4  # Default value for threads
@@ -66,27 +91,37 @@ echo "
 ║                 K I N D E R S E G             ║
 ╚═══════════════════════════════════════════════╝
 "
-echo "Kinderseg initiated at $(date) for $sub, Age: $age, Threads: $threads"
+echo "KindersegV0.3 initiated at $(date) for $sub, Age: $age, Threads: $threads"
 echo "========================================"
 
-source activate kinderseg
-FREESURFER_HOME="/opt/freesurfer"
-source $FREESURFER_HOME/SetUpFreeSurfer.sh
+# enabling Conda.
 
-bash "/opt/scripts/run_fastsurfer_volstats.sh" "$sub" "$threads"
+# Enable strict mode.
+#set -euo pipefail
+# ... Run whatever commands ...
+
+# Temporarily disable strict mode and activate conda:
+set +euo pipefail
+#conda activate myenv
+source /venv/bin/activate
+
+# Re-enable strict mode:
+set -euo pipefail
+
+bash "/fastsurfer/kinderseg/scripts/run_fastsurfer_volstats.sh" "$sub" "$threads"
 
 
-
-#  python environment + python scirpt
-conda activate kinderseg
-python "/opt/scripts/data_processing.py" "$sub"
+# #  python environment + python scirpt
+# conda activate kinderseg
+python "/fastsurfer/kinderseg/scripts/data_processing.py" "$sub"
 
 
 
 echo "========================================"
-# R environment + R script
+conda init
 conda activate R_kinderseg
-Rscript "/opt/scripts/data_analysis.R" "$sub" "$age"
+
+Rscript "/fastsurfer/kinderseg/scripts/data_analysis.R" "$sub" "$age"
 
 
 

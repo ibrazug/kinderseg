@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-# FastSurfer directories
-fastsurfer_dir="/opt/FastSurfer"
-
 # Create the destination directory if it doesn't exist
 mkdir -p $dest_dir
 
@@ -14,7 +11,7 @@ threads="$2"
 
 echo "Processing subject: $sub with FastSurfer..."
 # Check if the segmentation already exists
-if [ ! -e "${dest_dir}/${sub}/stats/aparc.DKTatlas+aseg.deep.volume.stats" ]; then 
+if [ ! -e "${dest_dir}/${sub}/stats/aseg+DKT.stats" ]; then 
     # Locate the T1 image for the subject
     t1=$(ls ${src_dir}/*.nii.gz 2>/dev/null | head -n 1)
 
@@ -23,17 +20,20 @@ if [ ! -e "${dest_dir}/${sub}/stats/aparc.DKTatlas+aseg.deep.volume.stats" ]; th
         exit 1
     fi
 
-    cd $fastsurfer_dir
-
 
     # Run FastSurfer segmentation
-    ./run_fastsurfer.sh --seg_only \
-                        --vol_segstats \
-                        --parallel --threads "$threads" \
+    /fastsurfer/run_fastsurfer.sh --threads "$threads" \
                         --sd $dest_dir \
+                        --no_cereb \
+                        --no_hypothal \
                         --sid $sub \
-                        --t1 $t1
+                        --t1 $t1 \
+                        --seg_only \
+                        --3T \
+                        --allow_root \
+                        --fs_license /fastsurfer/kinderseg/.license
 
+##CHECK 3T ???? which flags
 
 
 else
@@ -45,30 +45,30 @@ echo "========================================"
 
 SUBJECTS_DIR="/output" 
 
-echo "Processing subject: Generating volume stats table for $sub"
-# Check if the segmentation already exists
-if [ ! -e "${dest_dir}/${sub}/stats/volume.stats.csv" ]; then 
+# echo "Processing subject: Generating volume stats table for $sub"
+# # Check if the segmentation already exists
+# if [ ! -e "${dest_dir}/${sub}/stats/volume.stats.csv" ]; then 
 
-    # Initialize eTIV stats file with header
-    echo "IDs,eTIV" > "${dest_dir}/${sub}/stats/eTIV.stats.csv"
+#     # Initialize eTIV stats file with header
+#     echo "IDs,eTIV" > "${dest_dir}/${sub}/stats/eTIV.stats.csv"
 
-    # Extract eTIV for the first subject
-    etiv=$(mri_segstats --etiv-only --subject "$sub" | grep eTIV | awk '{print $4}')
-    echo "$sub,$etiv" >> "${dest_dir}/${sub}/stats/eTIV.stats.csv"
-    echo "eTIV written to ${dest_dir}/${sub}/stats/eTIV.stats.csv for subject $sub"
-
-
-    # Generate volume stats table for the first subject only
-    asegstats2table --subjects "$sub" \
-                    --skip --all-segs \
-                    --tablefile "${dest_dir}/${sub}/stats/volume.stats.csv" \
-                    --statsfile="aparc.DKTatlas+aseg.deep.volume.stats" \
-                    --common-segs --meas volume
+#     # Extract eTIV for the first subject
+#     etiv=$(mri_segstats --etiv-only --subject "$sub" | grep eTIV | awk '{print $4}')
+#     echo "$sub,$etiv" >> "${dest_dir}/${sub}/stats/eTIV.stats.csv"
+#     echo "eTIV written to ${dest_dir}/${sub}/stats/eTIV.stats.csv for subject $sub"
 
 
-else
-    echo "volume stats table for $sub found! Skipping the process."
-fi
+#     # Generate volume stats table for the first subject only
+#     asegstats2table --subjects "$sub" \
+#                     --skip --all-segs \
+#                     --tablefile "${dest_dir}/${sub}/stats/volume.stats.csv" \
+#                     --statsfile="aparc.DKTatlas+aseg.deep.volume.stats" \
+#                     --common-segs --meas volume
+
+
+# else
+#     echo "volume stats table for $sub found! Skipping the process."
+# fi
 
 
 echo "========================================"
