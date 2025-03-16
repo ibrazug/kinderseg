@@ -72,7 +72,6 @@ fi
 export src_dir="/data"                    # Directory with subjects (this will be a volume)
 export dest_dir="/output"                 # Destination directory (this will be a volume)
 
-
 # Create destination directory if it doesn't exist
 mkdir -p "${dest_dir}/${sub}"
 
@@ -111,14 +110,13 @@ set -euo pipefail
 bash "/fastsurfer/kinderseg/scripts/run_fastsurfer_volstats.sh" "$sub" "$threads"
 
 
-# #  python environment + python scirpt
-# conda activate kinderseg
+#  python environment + python scirpt
 python "/fastsurfer/kinderseg/scripts/data_processing.py" "$sub"
 
 
 
 echo "========================================"
-conda init
+source /opt/miniconda/etc/profile.d/conda.sh
 conda activate R_kinderseg
 
 Rscript "/fastsurfer/kinderseg/scripts/data_analysis.R" "$sub" "$age"

@@ -45,7 +45,7 @@ RUN conda env create -f R_environment.yml
 
 
 # === Switch Back to FastSurfer's Default User ===
-# USER nonroot
+USER nonroot
 
 # === Keep FastSurfer's Original Workdir and Entrypoint ===
 WORKDIR "/fastsurfer"
