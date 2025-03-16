@@ -4,6 +4,9 @@ FROM deepmi/fastsurfer:rocm-v2.4.2
 # Switch to root to perform installations and copy files
 USER root
 
+# Create nonroot user if it doesn't exist
+RUN id -u nonroot &>/dev/null || useradd -m -s /bin/bash nonroot
+
 # === Kinderseg Scripts & Data ===
 # Copy kinderseg scripts and set execute permission
 COPY scripts /fastsurfer/kinderseg/scripts
@@ -43,13 +46,11 @@ COPY R_environment.yml .
 # Create the Conda environment from the YAML file
 RUN conda env create -f R_environment.yml
 
-
 # === Switch Back to FastSurfer's Default User ===
-# USER nonroot
+USER nonroot
 
 # === Keep FastSurfer's Original Workdir and Entrypoint ===
 WORKDIR "/fastsurfer"
 
-ENTRYPOINT ["/fastsurfer/Docker/entrypoint.sh", "/kinderseg/scripts/run_kinderseg.sh"]
-
+ENTRYPOINT ["/fastsurfer/Docker/entrypoint.sh", "/fastsurfer/kinderseg/scripts/run_kinderseg.sh"]
 CMD ["--help"]
