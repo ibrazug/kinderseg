@@ -22,7 +22,7 @@ do
     	files=($( ls -1 -r *.nii.gz)) && \
     	cd .. && \
         mri_convert ./${s}/$files ./${s}/orig.mgz && \
-        recon-all -subjid $s.reconall -i ${s}/orig.mgz -all -parallel -openmp 4 &
+        recon-all -subjid $s.reconall -i ${s}/orig.mgz -hires -all -parallel -openmp 12 &
     else
 	echo "$s.reconall found. Skipping subject"
     fi
