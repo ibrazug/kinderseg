@@ -21,6 +21,8 @@ https://osf.io/kj7hy/
 ```
 [![Preprint DOI](https://img.shields.io/badge/DOI-10.31219/osf.io/dw7p4-blue.svg)](https://doi.org/10.31219/osf.io/dw7p4)
 
+![Example Output](imgs/Fig5.png)
+
 ## Run with Docker 
 
 ```
