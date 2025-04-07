@@ -1,0 +1,40 @@
+#!/bin/bash
+
+##SBATCH --job-name=KindersegCPU
+#SBATCH --time=12:00:00
+#SBATCH --partition=compute
+#SBATCH --mem=12G
+#SBATCH --tasks=12
+#SBATCH --array=0-13
+
+export FREESURFER_HOME="$HOME/software/freesurfer_7.4"
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
+sub_dir="$HOME/ag_work/dellorca/data/KinderSeg"
+dest_dir="$sub_dir/derivatives/FreeSurfer7b"
+
+export SUBJECTS_DIR=$dest_dir
+
+mkdir -p $dest_dir
+
+cd $sub_dir
+
+#sids=($(ls -d sub-*/))
+sids=('sub-k10460' 'sub-k10030' 'sub-k12230' 'sub-k10040' 'sub-NDAREM703YFD' \
+        'sub-NDARRG199RU4' 'sub-k13230' 'sub-k13220' 'sub-NDARCH514JCT' 'sub-k12340' \
+        'sub-k11220' 'sub-k11210' 'sub-k12320' 'sub-k10470')
+sid=${sids[$SLURM_ARRAY_TASK_ID]}
+
+nii=`ls $sub_dir/${sid}/anat/*_T1w.nii.gz`
+if [ ! -f "$nii" ]; then
+    nii=`ls $sub_dir/${sid}/*_T1w.nii.gz`
+fi
+if [ ! -f "$nii" ]; then
+    exit 1
+fi
+nii_dir=`dirname $nii`
+nii_file=`basename $nii`
+cd $dest_dir
+
+recon-all -i $nii -s $sid -hires -all -parallel -openmp 12
+segmentHA_T1.sh "${sid}"
