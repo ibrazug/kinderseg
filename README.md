@@ -54,7 +54,7 @@ docker run --gpus all --rm \
 ```
 git clone https://github.com/ibrazug/kinderseg.git
 cd kinderseg/Docker
-cp </path/to/your/license.txt> .
+cp </path/to/your/freesurfer/license.txt> . # copy your FreeSurfer license into folder
 docker build -t kinderseg .
 apptainer build kinderseg.sif docker-daemon://kinderseg:latest 
 apptainer run --nv kinderseg.sif \
