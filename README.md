@@ -51,18 +51,26 @@ docker run --gpus all --rm \
 
 ## Run with Apptainer/Singularity
 
-```
+```bash
 git clone https://github.com/ibrazug/kinderseg.git
 cd kinderseg/Docker
-cp </path/to/your/freesurfer/license.txt> . # copy your FreeSurfer license into folder
+cp </path/to/your/freesurfer/license.txt> .  # copy your FreeSurfer license into this folder
 docker build -t kinderseg .
-apptainer build kinderseg.sif docker-daemon://kinderseg:latest 
+apptainer build kinderseg.sif docker-daemon://kinderseg:latest
+
+# Run the container with proper mounting:
 apptainer run --nv kinderseg.sif \
     -B <nifti_data>:/data \
-    -B <output_dir>:/output \
-    --age <age> \
-    --threads <threads>
-```
+    -B ./output:/output \
+    --age 18 \
+    --threads 14
+````
+
+**Notes:**
+
+* Use relative paths (`./data`, `./output`) instead of `$PWD` to avoid mount errors.
+* Bind all `-B` options **before** the image name (`kinderseg.sif`).
+
 
 #### Requirements
 
