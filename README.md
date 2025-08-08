@@ -3,23 +3,14 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-[![Repository DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.12773962-blue.svg)](https://doi.org/10.5281/zenodo.12773962)
-
-
 
 ### Code for the paper:
 ```
- Ibrahim Zughayyar, Martin Bauer, Christopher Güttler, Ana Luísa Marcelino, Fabienne Kühne, Claudia Buss, Christine Heim, Annette Aigner, 
- Anna Tietze, and Andrea Dell'Orco 
-(2024, September 9).
-A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children:
-A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients.
+Zughayyar, I., Bauer, M., Güttler, C., de Almeida Marcelino, A.L., Kühne, F., Buss, C., Heim, C., Aigner, A., Tietze, A. and Dell'Orco, A. (2025), A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children: A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients. Brain Behav, 15: e70689. https://doi.org/10.1002/brb3.70689
 
-https://doi.org/10.31219/osf.io/dw7p4
-
-https://osf.io/kj7hy/
 ```
-[![Preprint DOI](https://img.shields.io/badge/DOI-10.31219/osf.io/dw7p4-blue.svg)](https://doi.org/10.31219/osf.io/dw7p4)
+[![Article DOI](https://img.shields.io/badge/DOI-10.1002/brb3.70689-blue.svg)](https://doi.org/10.1002/brb3.70689)
+[![Repository DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.12773962-blue.svg)](https://doi.org/10.5281/zenodo.12773962)
 
 ![Example Output](imgs/Fig5.png)
 
@@ -136,3 +127,62 @@ The `kinderseg` directory contains the following key files and scripts:
 
 
 
+## Article Citation
+To cite this work, please use the following reference:
+
+```
+Zughayyar, I., Bauer, M., Güttler, C., de Almeida Marcelino, A.L., Kühne, F., Buss, C., Heim, C., Aigner, A., Tietze, A. and Dell'Orco, A. (2025), A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children: A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients. Brain Behav, 15: e70689. https://doi.org/10.1002/brb3.70689
+```
+
+```
+@article{https://doi.org/10.1002/brb3.70689,
+author = {Zughayyar, Ibrahim and Bauer, Martin and Güttler, Christopher and de Almeida Marcelino, Ana Luisa and Kühne, Fabienne and Buss, Claudia and Heim, Christine and Aigner, Annette and Tietze, Anna and Dell'Orco, Andrea},
+title = {A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children: A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients},
+journal = {Brain and Behavior},
+volume = {15},
+number = {7},
+pages = {e70689},
+keywords = {automated segmentation, brain volumetry, FastSurfer, FreeSurfer, hemispheric asymmetries, neuroimaging, pediatric MRI},
+doi = {https://doi.org/10.1002/brb3.70689},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/brb3.70689},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/brb3.70689},
+year = {2025}
+}
+```
+
+```
+TY  - JOUR
+T1  - A FastSurfer Database for Age-Specific Brain Volumes in Healthy Children: A Tool for Quantifying Localized and Global Brain Volume Alterations in Pediatric Patients
+AU  - Zughayyar, Ibrahim
+AU  - Bauer, Martin
+AU  - Güttler, Christopher
+AU  - de Almeida Marcelino, Ana Luisa
+AU  - Kühne, Fabienne
+AU  - Buss, Claudia
+AU  - Heim, Christine
+AU  - Aigner, Annette
+AU  - Tietze, Anna
+AU  - Dell'Orco, Andrea
+Y1  - 2025/07/01
+PY  - 2025
+DA  - 2025/07/01
+DO  - https://doi.org/10.1002/brb3.70689
+T2  - Brain and Behavior
+JF  - Brain and Behavior
+JO  - Brain and Behavior
+JA  - Brain Behav
+SP  - e70689
+VL  - 15
+IS  - 7
+KW  - automated segmentation
+KW  - brain volumetry
+KW  - FastSurfer
+KW  - FreeSurfer
+KW  - hemispheric asymmetries
+KW  - neuroimaging
+KW  - pediatric MRI
+PB  - John Wiley & Sons, Ltd
+SN  - 2162-3279
+UR  - https://doi.org/10.1002/brb3.70689
+Y2  - 2025/08/08
+```
